@@ -1,8 +1,10 @@
+import Logo from "../Logo/Logo";
+
 const Footer = () => {
   return (
     <footer className="footer p-10 bg-base-200 text-base-content">
       <aside>
-        <p className="font-kenia font-medium text-3xl">Food For All</p>
+        <Logo />
       </aside>
       <nav>
         <header className="footer-title">Services</header>

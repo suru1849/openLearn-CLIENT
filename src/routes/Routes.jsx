@@ -15,6 +15,14 @@ const Routes = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
+      {
+        path: "all-classes",
+        element: <div>class</div>,
+      },
+      {
+        path: "teach-on-openLEARN",
+        element: <div>hhh</div>,
+      },
     ],
   },
   {

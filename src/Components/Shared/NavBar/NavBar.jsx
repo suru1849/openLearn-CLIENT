@@ -1,75 +1,107 @@
-import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
+import Logo from "../Logo/Logo";
 import "./NavBar.css";
 
 const NavBar = () => {
-  // const { user, logOut } = useAuthData();
+  const { user, logOut } = useAuth();
 
-  // const handleSignOut = () => {
-  //   logOut().then(() => {
-  //     Swal.fire({
-  //       title: "Success!",
-  //       text: "Sign Out Successfull",
-  //       icon: "success",
-  //       confirmButtonText: "Ok",
-  //     });
-  //   });
-  // };
+  const links = (
+    <>
+      <li>
+        <NavLink
+          to="/"
+          end
+          className={({ isActive }) =>
+            `${
+              isActive &&
+              "bg-green-400 text-white font-bold px-3 py-[1.5px] rounded-md"
+            }`
+          }
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/all-classes"
+          end
+          className={({ isActive }) =>
+            `${
+              isActive &&
+              "bg-green-400 text-white font-bold px-3 py-[1.5px] rounded-md"
+            }`
+          }
+        >
+          All Classes
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/teach-on-openLEARN"
+          end
+          className={({ isActive }) =>
+            `${
+              isActive &&
+              "bg-green-400 text-white font-bold px-3 py-[1.5px] rounded-md"
+            }`
+          }
+        >
+          Teach On openLEARN
+        </NavLink>
+      </li>
+      {!user && (
+        <li>
+          <NavLink to="/login">Sign In</NavLink>
+        </li>
+      )}
+    </>
+  );
 
   return (
     <>
-      <Navbar className="mt-3" fluid rounded>
-        <Navbar.Brand className="md:mx-auto lg:mx-0">
-          <p className="self-center whitespace-nowrap text-3xl dark:text-white font-kenia font-medium ">
-            <span>Food</span> For All
-          </p>
-        </Navbar.Brand>
-        <div className="flex md:order-2">
-          {user && (
-            <Dropdown
-              arrowIcon={false}
-              inline
-              label={
-                <Avatar alt="User settings" img={user?.photoURL} rounded />
-              }
-            >
-              <Dropdown.Header>
-                <span className="block text-sm">{user?.displayName}</span>
-                <span className="block truncate text-sm font-medium text-red-600">
-                  {user?.email}
-                </span>
-              </Dropdown.Header>
-              <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
-            </Dropdown>
-          )}
-          <Navbar.Toggle />
+      <div className="navbar bg-base-100 shadow-md rounded-md md:px-4">
+        <Link to="/" className="flex-1 md:flex-none">
+          <Logo />
+        </Link>
+        <div id="navbar" className="hidden flex-1 md:flex md:justify-center">
+          {links}
         </div>
-        <Navbar.Collapse className=" bg-base-200 md:bg-white p-5 md:p-0 rounded md:rounded-none mt-6 md:mt-0  md:mx-auto lg:mx-0 ">
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/add-food">Add Food</NavLink>
-          </li>
-          <li>
-            <NavLink to="/available-foods">Available Foods</NavLink>
-          </li>
-          <li>
-            <NavLink to="/manage-my-foods">Manage My Foods</NavLink>
-          </li>
-          <li>
-            <NavLink to="/my-food-request">My Food Request</NavLink>
-          </li>
-          {!user?.email ? (
-            <li>
-              <NavLink to="/login">Login</NavLink>
-            </li>
-          ) : (
-            <li></li>
-          )}
-        </Navbar.Collapse>
-      </Navbar>
-      <hr />
+        {user && (
+          <div className="flex-none">
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={user?.photoURL}
+                  />
+                </div>
+              </div>
+              <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <div className="block md:hidden ">
+                  <div className="space-y-2">{links}</div>
+                  <hr className="my-3" />
+                </div>
+                <div className="font-medium text-gray-700 px-[1px] pb-[1px]">
+                  {user?.displayName}
+                </div>
+
+                <li>
+                  <Link>Dashboard</Link>
+                </li>
+                <li>
+                  <button onClick={logOut}>LogOut</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        )}
+      </div>
     </>
   );
 };
