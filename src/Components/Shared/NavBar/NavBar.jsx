@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import Logo from "../Logo/Logo";
 import "./NavBar.css";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
@@ -67,9 +68,9 @@ const NavBar = () => {
         <div id="navbar" className="hidden flex-1 md:flex md:justify-center">
           {links}
         </div>
-        {user && (
-          <div className="flex-none">
-            <div className="dropdown dropdown-end">
+        <div className="flex-none">
+          <div className="dropdown dropdown-end">
+            {user ? (
               <div
                 tabIndex={0}
                 role="button"
@@ -82,25 +83,37 @@ const NavBar = () => {
                   />
                 </div>
               </div>
-              <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                <div className="block md:hidden ">
-                  <div className="space-y-2">{links}</div>
-                  <hr className="my-3" />
+            ) : (
+              <>
+                <div tabIndex={0} role="button" className="block md:hidden">
+                  <GiHamburgerMenu size={20} />
                 </div>
-                <div className="font-medium text-gray-700 px-[1px] pb-[1px]">
-                  {user?.displayName}
-                </div>
+              </>
+            )}
+            <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+              <div className="block md:hidden ">
+                <div className="space-y-2">{links}</div>
+                {user && <hr className="my-3" />}
+              </div>
+              {user ? (
+                <>
+                  <div className="font-medium text-gray-700 px-[1px] pb-[1px]">
+                    {user?.displayName}
+                  </div>
 
-                <li>
-                  <Link>Dashboard</Link>
-                </li>
-                <li>
-                  <button onClick={logOut}>LogOut</button>
-                </li>
-              </ul>
-            </div>
+                  <li>
+                    <Link>Dashboard</Link>
+                  </li>
+                  <li>
+                    <button onClick={logOut}>LogOut</button>
+                  </li>
+                </>
+              ) : (
+                ""
+              )}
+            </ul>
           </div>
-        )}
+        </div>
       </div>
     </>
   );
