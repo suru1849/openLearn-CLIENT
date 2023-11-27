@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { imageUpload } from "../../api/utils";
 import useAuth from "../../Hooks/useAuth";
-import { ImSpinner10 } from "react-icons/im";
+import { ImSpinner9 } from "react-icons/im";
 import LoadingBtn from "../../Components/LoadingBtn/LoadingBtn";
+import { toast } from "react-hot-toast";
+import { getToken, saveUser } from "../../api/auth";
 
 const SignUp = () => {
-  const { loading } = useAuth();
+  const { loading, createUser, updateUserProfile, googleSignIn } = useAuth();
   const [uploadedImageText, setUploadedImageText] = useState(
     "Click To Upload Image"
   );
@@ -21,17 +23,49 @@ const SignUp = () => {
     const password = form.password.value;
     const image = form.image.files[0];
 
-    const currentUser = {
-      name,
-      email,
-      password,
-      image,
-    };
+    try {
+      //  Svae image in imgBB server
+      const imageURL = await imageUpload(image);
 
-    const imageURL = await imageUpload(image);
-    console.log(imageURL);
+      // Create user
+      const result = await createUser(email, password);
 
-    console.log(currentUser);
+      // Set user name and photo
+      await updateUserProfile(name, imageURL?.data?.display_url);
+
+      // Save user data to DB
+      await saveUser(email);
+
+      // Get token form the server
+      await getToken(email);
+
+      console.log(result?.user);
+
+      toast.success("Registration Successful");
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    }
+  };
+
+  // sign In with google
+  const handleGoogle = async () => {
+    try {
+      // Sign in with google
+      const result = await googleSignIn();
+
+      // Save user data to DB
+      await saveUser(result?.user?.email);
+
+      // Get token form the server
+      await getToken(result?.user?.email);
+
+      console.log(result?.user);
+      toast.success("Sign In With Google Successful");
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    }
   };
 
   return (
@@ -110,10 +144,14 @@ const SignUp = () => {
                 <LoadingBtn
                   isLoading={loading}
                   label={"Register"}
-                  icon={ImSpinner10}
+                  icon={ImSpinner9}
                 />
               </button>
-              <button type="button" className="btn w-full  btn-outline ">
+              <button
+                onClick={handleGoogle}
+                type="button"
+                className="btn w-full  btn-outline "
+              >
                 <FcGoogle size={24} />
                 Sing In with Google
               </button>
@@ -125,7 +163,7 @@ const SignUp = () => {
                 rel="noopener noreferrer"
                 className="text-red-500"
               >
-                Log In
+                Sign In
               </Link>
             </p>
           </div>

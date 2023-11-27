@@ -1,20 +1,54 @@
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import LoadingBtn from "../../Components/LoadingBtn/LoadingBtn";
+import useAuth from "../../Hooks/useAuth";
+import { ImSpinner9 } from "react-icons/im";
+import { toast } from "react-hot-toast";
+import { getToken, saveUser } from "../../api/auth";
 
 const LogIn = () => {
-  const handleSubmit = (event) => {
+  const { signIn, loading, googleSignIn } = useAuth();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
 
-    const currentUser = {
-      email,
-      password,
-    };
+    try {
+      // Sign In
+      await signIn(email, password);
 
-    console.log(currentUser);
+      // Get token form the server
+      await getToken(email);
+
+      toast.success("Log In Successful");
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    }
+  };
+
+  // sign In with google
+  const handleGoogle = async () => {
+    try {
+      // Sign in with google
+      const result = await googleSignIn();
+
+      // Save user data to DB
+      await saveUser(result?.user?.email);
+
+      // Get token form the server
+      await getToken(result?.user?.email);
+
+      console.log(result?.user);
+
+      toast.success("Sign In With Google Successful");
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    }
   };
 
   return (
@@ -62,9 +96,17 @@ const LogIn = () => {
                 type="submit"
                 className="btn w-full  btn-success text-white"
               >
-                Sign In
+                <LoadingBtn
+                  isLoading={loading}
+                  label={"Sign In"}
+                  icon={ImSpinner9}
+                />
               </button>
-              <button type="button" className="btn w-full  btn-outline ">
+              <button
+                onClick={handleGoogle}
+                type="button"
+                className="btn w-full  btn-outline "
+              >
                 <FcGoogle size={24} />
                 Sing In with Google
               </button>
