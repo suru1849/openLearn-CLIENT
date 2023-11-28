@@ -102,7 +102,7 @@ const NavBar = () => {
                   </div>
 
                   <li>
-                    <Link>Dashboard</Link>
+                    <Link to="/dashboard">Dashboard</Link>
                   </li>
                   <li>
                     <button onClick={logOut}>LogOut</button>

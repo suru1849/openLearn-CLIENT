@@ -21,6 +21,7 @@ const SignUp = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const phone = form.phone.value;
     const image = form.image.files[0];
 
     try {
@@ -34,7 +35,7 @@ const SignUp = () => {
       await updateUserProfile(name, imageURL?.data?.display_url);
 
       // Save user data to DB
-      await saveUser(email);
+      await saveUser(email, imageURL?.data?.display_url, name, phone);
 
       // Get token form the server
       await getToken(email);
@@ -55,7 +56,12 @@ const SignUp = () => {
       const result = await googleSignIn();
 
       // Save user data to DB
-      await saveUser(result?.user?.email);
+      await saveUser(
+        result?.user?.email,
+        result?.user?.photoURL,
+        result?.user?.displayName,
+        result?.user?.phoneNumber
+      );
 
       // Get token form the server
       await getToken(result?.user?.email);
@@ -100,6 +106,18 @@ const SignUp = () => {
                 type="email"
                 name="email"
                 placeholder="type your email"
+                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block mb-2 text-sm">
+                Phone Number
+              </label>
+              <input
+                type="text"
+                name="phone"
+                placeholder="type your phone number"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
                 required
               />

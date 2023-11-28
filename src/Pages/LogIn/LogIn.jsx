@@ -37,7 +37,12 @@ const LogIn = () => {
       const result = await googleSignIn();
 
       // Save user data to DB
-      await saveUser(result?.user?.email);
+      await saveUser(
+        result?.user?.email,
+        result?.user?.photoURL,
+        result?.user?.displayName,
+        result?.user?.phoneNumber
+      );
 
       // Get token form the server
       await getToken(result?.user?.email);

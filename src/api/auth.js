@@ -1,9 +1,12 @@
 import axiosSecure from ".";
 
 // Save User in DataBase with role
-export const saveUser = async (email) => {
+export const saveUser = async (email, photo, name, phone) => {
   const currentUser = {
-    email: email,
+    name,
+    photo,
+    phone,
+    email,
     role: "student",
     status: "verified",
   };
@@ -25,4 +28,10 @@ export const clearToken = async () => {
   const { data } = axiosSecure("/logout");
   console.log("Token Clear --> ", data);
   return data;
+};
+
+// Get save a user form the Data-Base
+export const getUser = async (email) => {
+  const { data } = await axiosSecure(`/user/${email}`);
+  return { ...data };
 };
