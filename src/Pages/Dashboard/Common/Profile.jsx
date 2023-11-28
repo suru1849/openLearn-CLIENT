@@ -4,7 +4,7 @@ const Profile = () => {
   const { role, email, phone, name, photo } = useUser();
 
   return (
-    <div className="h-full flex justify-center  items-center border-2">
+    <div className="h-full flex justify-center  items-center ">
       <div className="bg-base-300 p-10 w-[90vw] md:w-[60vw] rounded-lg shadow-lg">
         <div className="flex flex-col justify-center items-center p-5">
           {/* profile */}

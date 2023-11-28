@@ -35,3 +35,29 @@ export const getUser = async (email) => {
   const { data } = await axiosSecure(`/user/${email}`);
   return { ...data };
 };
+
+// Get all users
+export const getAllUsers = async () => {
+  const { data } = await axiosSecure(`/users`);
+  return data;
+};
+
+// Update User Role
+export const updateRole = async ({ user, Role }) => {
+  const updateUser = {
+    email: user?.email,
+    name: user?.name,
+    phone: user?.phone,
+    photo: user?.photo,
+    status: user?.status,
+    role: Role,
+  };
+
+  const { data } = await axiosSecure.put(
+    `/user/update/${user?.email}`,
+    updateUser
+  );
+  console.log(updateUser);
+
+  return data;
+};
