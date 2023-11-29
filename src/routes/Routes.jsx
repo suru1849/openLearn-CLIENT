@@ -7,6 +7,10 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Profile from "../Pages/Dashboard/Common/Profile";
 import Users from "../Pages/Dashboard/Admin/Users/Users";
+import PrivateRoute from "./PrivateRoute";
+import TeachOn from "../Pages/TeachOn/TeachOn";
+import TeacherRequest from "../Pages/Dashboard/Admin/TeacherRequest/TeacherRequest";
+import StudentRoutes from "./StudentRoutes";
 
 const Routes = createBrowserRouter([
   {
@@ -24,7 +28,13 @@ const Routes = createBrowserRouter([
       },
       {
         path: "teach-on-openLEARN",
-        element: <div>hhh</div>,
+        element: (
+          <PrivateRoute>
+            <StudentRoutes>
+              <TeachOn />
+            </StudentRoutes>
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -38,15 +48,36 @@ const Routes = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard",
-        element: <Profile />,
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "users",
-        element: <Users />,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Users />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "teacher-request",
+        element: (
+          <PrivateRoute>
+            <TeacherRequest />
+          </PrivateRoute>
+        ),
       },
     ],
   },

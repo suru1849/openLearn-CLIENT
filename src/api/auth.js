@@ -61,3 +61,57 @@ export const updateRole = async ({ user, Role }) => {
 
   return data;
 };
+
+// Save Teacher Request
+export const teacherReq = async (user) => {
+  const currentUser = {
+    name: user?.name,
+    email: user?.email,
+    experience: user?.experience,
+    category: user?.category,
+    image: user?.image,
+    status: user?.status,
+  };
+
+  const { data } = await axiosSecure.put(
+    `/teacher-req/${user?.email}`,
+    currentUser
+  );
+
+  return data;
+};
+
+// Get A Teacher Requests
+export const getTeacherReq = async (email) => {
+  const { data } = await axiosSecure(`/teacher-reqs/${email}`);
+
+  if (!data?.status) return null;
+
+  return data.status;
+};
+
+// Get ALL Teacher Requests
+export const getAllTeacherReq = async () => {
+  const { data } = await axiosSecure(`/teacher-reqs`);
+
+  return data;
+};
+
+// Update Status of requested teacher
+export const updateReqStatus = async ({ user, status }) => {
+  const updateUser = {
+    email: user?.email,
+    name: user?.name,
+    image: user?.image,
+    experience: user?.experience,
+    category: user?.category,
+    status: status,
+  };
+
+  const { data } = await axiosSecure.put(
+    `/teacher-req/update/${user?.email}`,
+    updateUser
+  );
+
+  return data;
+};

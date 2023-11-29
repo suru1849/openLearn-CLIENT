@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { imageUpload } from "../../api/utils";
 import useAuth from "../../Hooks/useAuth";
@@ -10,6 +10,7 @@ import { getToken, saveUser } from "../../api/auth";
 
 const SignUp = () => {
   const { loading, createUser, updateUserProfile, googleSignIn } = useAuth();
+  const navigate = useNavigate();
   const [uploadedImageText, setUploadedImageText] = useState(
     "Click To Upload Image"
   );
@@ -43,6 +44,9 @@ const SignUp = () => {
       console.log(result?.user);
 
       toast.success("Registration Successful");
+
+      // Navigate
+      navigate("/");
     } catch (err) {
       console.log(err);
       toast.error(err.message);
@@ -68,6 +72,8 @@ const SignUp = () => {
 
       console.log(result?.user);
       toast.success("Sign In With Google Successful");
+      // Navigate
+      navigate("/");
     } catch (err) {
       console.log(err);
       toast.error(err.message);

@@ -3,9 +3,11 @@ import useAuth from "../../../Hooks/useAuth";
 import Logo from "../Logo/Logo";
 import "./NavBar.css";
 import { GiHamburgerMenu } from "react-icons/gi";
+import useUser from "../../../Hooks/useUser";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
+  const { role } = useUser();
 
   const links = (
     <>
@@ -37,20 +39,22 @@ const NavBar = () => {
           All Classes
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/teach-on-openLEARN"
-          end
-          className={({ isActive }) =>
-            `${
-              isActive &&
-              "bg-green-400 text-white font-bold px-3 py-[1.5px] rounded-md"
-            }`
-          }
-        >
-          Teach On openLEARN
-        </NavLink>
-      </li>
+      {role === "student" && (
+        <li>
+          <NavLink
+            to="/teach-on-openLEARN"
+            end
+            className={({ isActive }) =>
+              `${
+                isActive &&
+                "bg-green-400 text-white font-bold px-3 py-[1.5px] rounded-md"
+              }`
+            }
+          >
+            Teach On openLEARN
+          </NavLink>
+        </li>
+      )}
       {!user && (
         <li>
           <NavLink to="/login">Sign In</NavLink>
