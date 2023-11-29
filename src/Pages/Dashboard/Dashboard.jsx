@@ -4,6 +4,7 @@ import Container from "../../Components/Container/Container";
 import Logo from "../../Components/Shared/Logo/Logo";
 import AdminMenu from "./Menu/AdminMenu";
 import MenuItem from "../../Components/MenuItem/MenuItem";
+import { Helmet } from "react-helmet-async";
 // icons
 import { RiProfileLine } from "react-icons/ri";
 import StudentMenu from "./Menu/StudentMenu";
@@ -29,6 +30,9 @@ const Dashboard = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>openLEARN | Dashboard</title>
+      </Helmet>
       {/* small device navbar */}
       <div className="block md:hidden ">
         <SmallNavBar openSideBar={openSideBar} />
@@ -56,9 +60,11 @@ const Dashboard = () => {
           <div className="space-y-3 py-3 flex flex-col justify-between h-[calc(100vh-100px)]">
             {/* menu Items */}
 
+            {/* <div className=""> */}
             {role === "admin" && <AdminMenu />}
             {role === "student" && <StudentMenu />}
             {role === "teacher" && <TeacherMenu />}
+            {/* </div> */}
 
             <div>
               <hr className="my-10 border-[1px] w-[80%] mx-auto" />

@@ -11,6 +11,10 @@ import PrivateRoute from "./PrivateRoute";
 import TeachOn from "../Pages/TeachOn/TeachOn";
 import TeacherRequest from "../Pages/Dashboard/Admin/TeacherRequest/TeacherRequest";
 import StudentRoutes from "./StudentRoutes";
+import AddClass from "../Pages/Dashboard/Teacher/AddClass/AddClass";
+import MyClass from "../Pages/Dashboard/Teacher/MyClass/MyClass";
+import UpdateClass from "../Pages/Dashboard/Teacher/MyClass/UpdateClass";
+import { getAClass } from "../api/class";
 
 const Routes = createBrowserRouter([
   {
@@ -79,7 +83,32 @@ const Routes = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "add-class",
+        element: (
+          <PrivateRoute>
+            <AddClass />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-class",
+        element: (
+          <PrivateRoute>
+            <MyClass />
+          </PrivateRoute>
+        ),
+      },
     ],
+  },
+  {
+    path: "/class/update/:id",
+    element: (
+      <PrivateRoute>
+        <UpdateClass />
+      </PrivateRoute>
+    ),
+    loader: async ({ params }) => await getAClass(params.id),
   },
 ]);
 

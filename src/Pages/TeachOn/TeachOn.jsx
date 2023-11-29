@@ -51,8 +51,6 @@ const TeachOn = () => {
     queryKey: ["status"],
   });
 
-  console.log(status);
-
   return (
     <div className="min-h-screen flex justify-center items-center">
       <section className="w-[90%] min-h-[100%] my-10 rounded-md p-6 bg-gray-400 text-gray-50 ">
