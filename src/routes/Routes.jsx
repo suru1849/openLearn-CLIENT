@@ -15,6 +15,7 @@ import AddClass from "../Pages/Dashboard/Teacher/AddClass/AddClass";
 import MyClass from "../Pages/Dashboard/Teacher/MyClass/MyClass";
 import UpdateClass from "../Pages/Dashboard/Teacher/MyClass/UpdateClass";
 import { getAClass } from "../api/class";
+import AllClasses from "../Pages/Dashboard/Admin/AllClasses/AllClasses";
 
 const Routes = createBrowserRouter([
   {
@@ -70,7 +71,6 @@ const Routes = createBrowserRouter([
         path: "users",
         element: (
           <PrivateRoute>
-            {" "}
             <Users />
           </PrivateRoute>
         ),
@@ -96,6 +96,14 @@ const Routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyClass />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "all-classes",
+        element: (
+          <PrivateRoute>
+            <AllClasses />
           </PrivateRoute>
         ),
       },

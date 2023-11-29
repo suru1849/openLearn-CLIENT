@@ -7,7 +7,11 @@ import Loader from "../../../../Components/Loader/Loader";
 const MyClass = () => {
   const { user } = useAuth();
 
-  const { data: classes = [], isLoading } = useQuery({
+  const {
+    data: classes = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     enabled: !!user?.email,
     queryFn: async () => await getAddedClass(user?.email),
     queryKey: ["classes"],
@@ -20,7 +24,7 @@ const MyClass = () => {
   return (
     <div className="grid gap-5 grid-cols-1 lg:grid-cols-2 m-3">
       {classes?.map((Class) => (
-        <MyClassCard key={Class._id} Class={Class} />
+        <MyClassCard key={Class._id} Class={Class} refetch={refetch} />
       ))}
     </div>
   );

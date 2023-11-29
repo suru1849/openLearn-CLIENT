@@ -20,8 +20,6 @@ const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  console.log("Role --> ", role);
-
   const openSideBar = () => {
     setIsOpen(!isOpen);
   };
