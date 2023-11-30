@@ -5,11 +5,13 @@ import useAuth from "../../Hooks/useAuth";
 import { ImSpinner9 } from "react-icons/im";
 import { toast } from "react-hot-toast";
 import { getToken, saveUser } from "../../api/auth";
+import { useState } from "react";
 
 const LogIn = () => {
-  const { signIn, loading, googleSignIn } = useAuth();
+  const { signIn, googleSignIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const from = location?.state?.from || "/";
 
@@ -21,6 +23,7 @@ const LogIn = () => {
     const password = form.password.value;
 
     try {
+      setLoading(true);
       // Sign In
       await signIn(email, password);
 
@@ -34,6 +37,9 @@ const LogIn = () => {
     } catch (err) {
       console.log(err);
       toast.error(err.message);
+      form.reset();
+    } finally {
+      setLoading(false);
     }
   };
 

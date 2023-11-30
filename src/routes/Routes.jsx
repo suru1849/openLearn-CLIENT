@@ -16,6 +16,10 @@ import MyClass from "../Pages/Dashboard/Teacher/MyClass/MyClass";
 import UpdateClass from "../Pages/Dashboard/Teacher/MyClass/UpdateClass";
 import { getAClass } from "../api/class";
 import AllClasses from "../Pages/Dashboard/Admin/AllClasses/AllClasses";
+import Classes from "../Pages/Classes/Classes";
+import MyClassDetails from "../Pages/Dashboard/Teacher/MyClass/MyClassDetails";
+import ClassEnroll from "../Pages/Classes/ClassEnroll";
+import Payment from "../Pages/Payment/Payment";
 
 const Routes = createBrowserRouter([
   {
@@ -29,7 +33,16 @@ const Routes = createBrowserRouter([
       },
       {
         path: "all-classes",
-        element: <div>class</div>,
+        element: <Classes />,
+      },
+      {
+        path: "class/:id",
+        element: (
+          <PrivateRoute>
+            <ClassEnroll />
+          </PrivateRoute>
+        ),
+        loader: async ({ params }) => await getAClass(params.id),
       },
       {
         path: "teach-on-openLEARN",
@@ -100,6 +113,15 @@ const Routes = createBrowserRouter([
         ),
       },
       {
+        path: "my-class/:id",
+        element: (
+          <PrivateRoute>
+            <MyClassDetails />
+          </PrivateRoute>
+        ),
+        loader: async ({ params }) => await getAClass(params.id),
+      },
+      {
         path: "all-classes",
         element: (
           <PrivateRoute>
@@ -114,6 +136,15 @@ const Routes = createBrowserRouter([
     element: (
       <PrivateRoute>
         <UpdateClass />
+      </PrivateRoute>
+    ),
+    loader: async ({ params }) => await getAClass(params.id),
+  },
+  {
+    path: "/payment/:id",
+    element: (
+      <PrivateRoute>
+        <Payment />
       </PrivateRoute>
     ),
     loader: async ({ params }) => await getAClass(params.id),

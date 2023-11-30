@@ -84,12 +84,13 @@ const MyClassCard = ({ Class, refetch }) => {
           >
             Update
           </Link>
-          <button
+          <Link
+            to={`/dashboard/my-class/${_id}`}
             disabled={status === "approved" ? false : true}
             className="btn btn-success font-bold text-white"
           >
             Details
-          </button>
+          </Link>
           <button
             onClick={handleDelete}
             className="btn btn-error font-bold text-white"

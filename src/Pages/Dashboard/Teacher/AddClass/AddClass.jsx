@@ -5,8 +5,10 @@ import Form from "./Form";
 import { toast } from "react-hot-toast";
 import { saveClass } from "../../../../api/class";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../../../Hooks/useAuth";
 
 const AddClass = () => {
+  const { user } = useAuth();
   const [uploadedImageName, setUploadedImageName] = useState(
     "Click To Uploaded Image"
   );
@@ -34,6 +36,10 @@ const AddClass = () => {
       description,
       image: image_url?.data?.display_url,
       status: "pending",
+      teacher: {
+        image: user?.photoURL,
+      },
+      enroll: 0,
     };
 
     try {

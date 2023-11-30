@@ -41,7 +41,7 @@ export const getClassByStatus = async ({ status }) => {
   return data;
 };
 
-// Get Classes Depending on Status
+// Get All Classes
 export const getClasses = async () => {
   const { data } = await axiosSecure(`/classes`);
 
