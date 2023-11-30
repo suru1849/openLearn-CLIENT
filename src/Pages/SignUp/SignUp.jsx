@@ -81,8 +81,8 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center">
-      <div className="flex flex-col min-w-[30vw] p-6 rounded-md sm:p-10 dark:bg-gray-900 dark:text-gray-100 bg-base-200 border-[1px] shadow-lg">
+    <div className="max-h-[90vh] flex justify-center items-center my-24 lg:my-20">
+      <div className="flex flex-col min-w-[30vw] p-5 rounded-md sm:p-10 dark:bg-gray-900 dark:text-gray-100 bg-base-200 border-[1px] shadow-lg">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Sign Up</h1>
           <p className="text-sm dark:text-gray-400">

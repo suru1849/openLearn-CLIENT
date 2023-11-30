@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
+import Banner from "./Banner/Banner";
+import BecomeInstructor from "./BecomeIstructior/BecomeInstructor";
 
 const Home = () => {
   const { user } = useAuth();
@@ -9,7 +11,8 @@ const Home = () => {
       <Helmet>
         <title>openLEARN | Home</title>
       </Helmet>
-      <div>hHome</div>
+      <Banner />
+      <BecomeInstructor />
     </>
   );
 };

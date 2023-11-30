@@ -73,6 +73,7 @@ const MyEnrollClassDetails = () => {
       classID: id,
       userName: user?.displayName,
       userEmail: user?.email,
+      userImage: user?.photoURL,
     };
 
     // setFeedBack
