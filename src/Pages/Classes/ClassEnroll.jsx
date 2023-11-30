@@ -1,6 +1,8 @@
 import { Link, useLoaderData } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const ClassEnroll = () => {
+  const { user } = useAuth();
   const data = useLoaderData();
 
   console.log(data);
@@ -41,6 +43,7 @@ const ClassEnroll = () => {
               </p>
               <Link
                 to={`/payment/${data?._id}`}
+                disabled={user?.email === data?.email ? true : false}
                 className="btn btn-success text-white font-bold"
               >
                 Payment

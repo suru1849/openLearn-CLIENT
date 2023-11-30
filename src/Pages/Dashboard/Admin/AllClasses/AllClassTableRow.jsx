@@ -1,6 +1,7 @@
 import { toast } from "react-hot-toast";
 import { updateClass } from "../../../../api/class";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const AllClassTableRow = ({ Class, refetch }) => {
@@ -73,12 +74,13 @@ const AllClassTableRow = ({ Class, refetch }) => {
         >
           Reject
         </button>
-        <button
+        <Link
+          to={`feedBack/${Class?._id}`}
           disabled={Class?.status === "approved" ? false : true}
           className={`btn btn-primary btn-xs`}
         >
           See Progress
-        </button>
+        </Link>
       </th>
     </tr>
   );

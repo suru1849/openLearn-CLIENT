@@ -20,6 +20,9 @@ import Classes from "../Pages/Classes/Classes";
 import MyClassDetails from "../Pages/Dashboard/Teacher/MyClass/MyClassDetails";
 import ClassEnroll from "../Pages/Classes/ClassEnroll";
 import Payment from "../Pages/Payment/Payment";
+import MyEnrollClasses from "../Pages/Dashboard/Student/MyEnrollClasses/MyEnrollClasses";
+import MyEnrollClassDetails from "../Pages/Dashboard/Student/MyEnrollClasses/MyEnrollClassDetails";
+import FeedBack from "../Pages/Dashboard/Admin/AllClasses/FeedBack";
 
 const Routes = createBrowserRouter([
   {
@@ -119,13 +122,36 @@ const Routes = createBrowserRouter([
             <MyClassDetails />
           </PrivateRoute>
         ),
-        loader: async ({ params }) => await getAClass(params.id),
       },
       {
         path: "all-classes",
         element: (
           <PrivateRoute>
             <AllClasses />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-enroll-classes",
+        element: (
+          <PrivateRoute>
+            <MyEnrollClasses />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-enroll-classes/class/:id",
+        element: (
+          <PrivateRoute>
+            <MyEnrollClassDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "all-classes/feedBack/:id",
+        element: (
+          <PrivateRoute>
+            <FeedBack />
           </PrivateRoute>
         ),
       },

@@ -21,7 +21,12 @@ export const updateClassEnrollment = async (Class) => {
     Class
   );
 
-  console.log(Class);
+  return data;
+};
+
+// Get enrolls based on User email
+export const getUserEnrolls = async (email) => {
+  const { data } = await axiosSecure(`/enrolls/${email}`);
 
   return data;
 };

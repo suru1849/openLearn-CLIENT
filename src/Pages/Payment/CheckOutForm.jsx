@@ -109,6 +109,8 @@ const CheckOutForm = ({ Class }) => {
       } finally {
         navigate(-1);
       }
+    } else {
+      toast.error(cardError);
     }
   };
 
