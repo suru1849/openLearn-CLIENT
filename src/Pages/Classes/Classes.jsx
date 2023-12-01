@@ -6,11 +6,7 @@ import ClassCard from "./ClassCard";
 import EmptyPage from "../../Components/EmptyPage/EmptyPage";
 
 const Classes = () => {
-  const {
-    data: classes = [],
-    isLoading,
-    refetch,
-  } = useQuery({
+  const { data: classes = [], isLoading } = useQuery({
     enabled: true,
     queryFn: async () => await getClassByStatus({ status: "approved" }),
     queryKey: ["classes"],
