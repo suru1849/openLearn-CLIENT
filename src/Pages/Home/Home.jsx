@@ -3,10 +3,11 @@ import useAuth from "../../Hooks/useAuth";
 import Banner from "./Banner/Banner";
 import BecomeInstructor from "./BecomeIstructior/BecomeInstructor";
 import TotalStatistics from "./TotalStatistics/TotalStatistics";
+import Collaborators from "./Collaborators/Collaborators";
 
 const Home = () => {
   const { user } = useAuth();
-  console.log(user);
+
   return (
     <>
       <Helmet>
@@ -14,6 +15,7 @@ const Home = () => {
       </Helmet>
       <Banner />
       <BecomeInstructor />
+      <Collaborators />
       <TotalStatistics />
     </>
   );
