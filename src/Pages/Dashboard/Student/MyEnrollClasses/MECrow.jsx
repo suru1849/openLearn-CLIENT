@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 
 const MECrow = ({ data, handleSubmit }) => {
-  console.log();
-
   return (
     <tr>
       <td>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 const ClassCard = ({ Class }) => {
   return (
-    <div className="flex flex-col p-4 space-y-5 overflow-hidden rounded-lg shadow-md bg-base-200 text-black ">
+    <div className="flex flex-col p-4 space-y-5 overflow-hidden rounded-lg shadow-md bg-base-200 text-black group">
       <div className="flex space-x-2">
         <div className="font-semibold text-sm">Teacher: </div>
         <div className="flex flex-col">
@@ -15,7 +15,7 @@ const ClassCard = ({ Class }) => {
         <figure className="flex">
           <img
             src={Class?.image}
-            className="object-center rounded-md w-full mb-4 h-60 sm:h-96 bg-gray-500"
+            className="object-center rounded-md w-full mb-4 h-60 sm:h-96 bg-gray-500 group-hover:scale-105 transition"
           />
         </figure>
         <h2 className="mb-1 text-2xl font-semibold">{Class?.title}</h2>

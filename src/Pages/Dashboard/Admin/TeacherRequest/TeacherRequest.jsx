@@ -17,8 +17,6 @@ const TeacherRequest = () => {
     queryKey: ["requests"],
   });
 
-  console.log(requests);
-
   if (isLoading) return <Loader />;
 
   return (

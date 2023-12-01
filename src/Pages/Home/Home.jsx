@@ -5,6 +5,8 @@ import BecomeInstructor from "./BecomeIstructior/BecomeInstructor";
 import TotalStatistics from "./TotalStatistics/TotalStatistics";
 import Collaborators from "./Collaborators/Collaborators";
 import ContactUs from "./ContactUs/ContactUs";
+import Carousel from "../../Components/Carousel/Carousel";
+import FeedBackCarousel from "../../Components/Carousel/FeedBackCarousel";
 
 const Home = () => {
   const { user } = useAuth();
@@ -15,10 +17,12 @@ const Home = () => {
         <title>openLEARN | Home</title>
       </Helmet>
       <Banner />
+      <Carousel />
       <BecomeInstructor />
       <Collaborators />
-      <TotalStatistics />
       <ContactUs />
+      <FeedBackCarousel />
+      <TotalStatistics />
     </>
   );
 };

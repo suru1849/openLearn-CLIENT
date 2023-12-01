@@ -56,3 +56,10 @@ export const deleteClass = async (id) => {
 
   return data;
 };
+
+// Get all classes(approved) sorted by enrollment
+export const getSortedClass = async () => {
+  const { data } = await axiosSecure("/classes/sort-by-enroll");
+
+  return data;
+};

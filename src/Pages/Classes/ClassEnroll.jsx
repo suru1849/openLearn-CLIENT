@@ -5,8 +5,6 @@ const ClassEnroll = () => {
   const { user } = useAuth();
   const data = useLoaderData();
 
-  console.log(data);
-
   return (
     <div className="min-h-screen flex  justify-center items-center">
       <div className="min-w-[80%] md:min-w-[40%] p-4 shadow-md bg-gray-200 dark:text-gray-400 group">

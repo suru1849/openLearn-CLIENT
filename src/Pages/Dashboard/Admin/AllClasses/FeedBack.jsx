@@ -15,8 +15,6 @@ const FeedBack = () => {
     });
   }, [id]);
 
-  console.log(feedBack);
-
   return (
     <div>
       {feedBack.length > 0 ? (

@@ -16,7 +16,14 @@ export const setFeedBack = async (email, feedBack) => {
 
 // Get feedBack by Class id
 export const getFeedBack = async (id) => {
-  const { data } = await axiosSecure(`feedBacks/${id}`);
+  const { data } = await axiosSecure(`feedBack/${id}`);
+
+  return data;
+};
+
+// Get feedBack by Class id
+export const getAllFeedBack = async () => {
+  const { data } = await axiosSecure(`feedBacks`);
 
   return data;
 };

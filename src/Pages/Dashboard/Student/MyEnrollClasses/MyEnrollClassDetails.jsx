@@ -71,6 +71,7 @@ const MyEnrollClassDetails = () => {
       description,
       rating: rating,
       classID: id,
+      classTitle: Class?.title,
       userName: user?.displayName,
       userEmail: user?.email,
       userImage: user?.photoURL,
@@ -95,9 +96,15 @@ const MyEnrollClassDetails = () => {
     <div>
       {/* assigmnets */}
       <div className="my-5">
-        <button onClick={() => closeModal()} className="btn btn-warning">
+        {/* tooltip */}
+        <button
+          onClick={() => closeModal()}
+          className="btn btn-warning tooltip tooltip-bottom flex"
+          data-tip="Give the feed-back of this class"
+        >
           <MdAssignmentAdd /> Teaching Evaluation Report
         </button>
+
         {/* modal */}
         <MECmodal
           isOpen={isOpen}

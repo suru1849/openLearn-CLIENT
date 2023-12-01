@@ -17,6 +17,7 @@ const AddClass = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
     const form = event.target;
     const name = form.name.value;
@@ -43,7 +44,6 @@ const AddClass = () => {
     };
 
     try {
-      setLoading(true);
       // Save classed to the data base;
       await saveClass(addedClass);
 

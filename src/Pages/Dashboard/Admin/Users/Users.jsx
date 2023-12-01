@@ -8,7 +8,7 @@ const Users = () => {
   const { user, loading } = useAuth();
 
   const {
-    data: users,
+    data: users = [],
     isLoading,
     refetch,
   } = useQuery({

@@ -10,8 +10,6 @@ const AllClassTableRow = ({ Class, refetch }) => {
     const updatedClass = { ...Class, status };
     delete updatedClass._id;
 
-    console.log(updatedClass);
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -59,7 +57,7 @@ const AllClassTableRow = ({ Class, refetch }) => {
       <td>
         <div className="font-semibold">{Class?.description}</div>
       </td>
-      <th className="space-x-3">
+      <td className="space-x-3 flex ">
         <button
           onClick={() => handleAction("approved")}
           disabled={Class?.status !== "pending" ? true : false}
@@ -81,7 +79,7 @@ const AllClassTableRow = ({ Class, refetch }) => {
         >
           See Progress
         </Link>
-      </th>
+      </td>
     </tr>
   );
 };

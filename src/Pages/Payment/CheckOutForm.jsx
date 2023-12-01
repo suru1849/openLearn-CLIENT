@@ -28,7 +28,6 @@ const CheckOutForm = ({ Class }) => {
   useEffect(() => {
     if (Class?.price > 0) {
       createPaymentIntent({ price: Class?.price }).then((data) => {
-        console.log("ClientSecrte -> ", data.clientSecret);
         setClientSecret(data.clientSecret);
       });
     }
@@ -47,6 +46,7 @@ const CheckOutForm = ({ Class }) => {
     }
 
     // card data lookup (Asynchronous Network Call)
+    // eslint-disable-next-line no-unused-vars
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card,
@@ -57,7 +57,6 @@ const CheckOutForm = ({ Class }) => {
       setCardError(error.message);
     } else {
       setCardError(" ");
-      console.log("PaymentMethod", paymentMethod);
     }
 
     // processing
@@ -79,8 +78,6 @@ const CheckOutForm = ({ Class }) => {
       console.log(confirmError);
       setCardError(confirmError.message);
     }
-
-    console.log("PaymentIntent", paymentIntent);
 
     if (paymentIntent.status === "succeeded") {
       // save payment information to the server

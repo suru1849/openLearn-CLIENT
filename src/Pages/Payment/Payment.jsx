@@ -16,8 +16,6 @@ const Payment = () => {
     navigate(-1);
   };
 
-  console.log(data);
-
   return (
     <Transition appear show={true} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>

@@ -33,9 +33,7 @@ const TeachOn = () => {
 
     try {
       // save req
-      const data = await teacherReq(reqUser);
-
-      console.log(data);
+      await teacherReq(reqUser);
 
       navigate("/");
       toast.success("Reqested Successful");

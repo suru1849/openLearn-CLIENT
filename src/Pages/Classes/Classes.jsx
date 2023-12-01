@@ -12,8 +12,6 @@ const Classes = () => {
     queryKey: ["classes"],
   });
 
-  console.log(classes);
-
   if (isLoading) return <Loader />;
 
   return (
