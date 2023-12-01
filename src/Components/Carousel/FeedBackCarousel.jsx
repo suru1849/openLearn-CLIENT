@@ -120,8 +120,8 @@ const FeedBackCarousel = () => {
           </button>
         </div>
       ) : (
-        <div className="flex justify-center items-center">
-          <p className="text-lg">No Feed Back Fount 😢</p>
+        <div className="flex justify-center items-center border-2 w-[60%] mx-auto p-3">
+          <p className="text-lg">No Feed Back Found 😢</p>
         </div>
       )}
     </div>

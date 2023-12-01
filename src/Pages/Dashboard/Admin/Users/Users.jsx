@@ -3,21 +3,31 @@ import useAuth from "../../../../Hooks/useAuth";
 import { getAllUsers } from "../../../../api/auth";
 import Loader from "../../../../Components/Loader/Loader";
 import UsersTableRow from "./UsersTableRow";
+import { useEffect, useState } from "react";
+import axiosSecure from "../../../../api";
 
 const Users = () => {
   const { user, loading } = useAuth();
+  const [users, setUsers] = useState([]);
 
-  const {
-    data: users = [],
-    isLoading,
-    refetch,
-  } = useQuery({
-    enabled: !loading && !!user?.email,
-    queryFn: async () => await getAllUsers(),
-    queryKey: ["users"],
-  });
+  useEffect(() => {
+    axiosSecure.get(`/users?searchItem=''`).then((data) => {
+      console.log(data.data);
+      setUsers(data.data);
+    });
+  }, []);
 
-  if (isLoading) return <Loader />;
+  // const {
+  //   data: users = [],
+  //   isLoading,
+  //   refetch,
+  // } = useQuery({
+  //   enabled: !loading && !!user?.email,
+  //   queryFn: async () => await getAllUsers(),
+  //   queryKey: ["users"],
+  // });
+
+  // if (isLoading) return <Loader />;
 
   return (
     <div className="overflow-x-auto">
@@ -33,7 +43,11 @@ const Users = () => {
         <tbody>
           {/* rows */}
           {users?.map((user) => (
-            <UsersTableRow key={user._id} user={user} refetch={refetch} />
+            <UsersTableRow
+              key={user._id}
+              user={user}
+              // refetch={refetch}
+            />
           ))}
         </tbody>
       </table>

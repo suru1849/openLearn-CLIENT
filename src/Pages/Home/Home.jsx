@@ -7,6 +7,7 @@ import Collaborators from "./Collaborators/Collaborators";
 import ContactUs from "./ContactUs/ContactUs";
 import Carousel from "../../Components/Carousel/Carousel";
 import FeedBackCarousel from "../../Components/Carousel/FeedBackCarousel";
+import Accrodion from "./Accrodion/Accrodion";
 
 const Home = () => {
   const { user } = useAuth();
@@ -16,13 +17,14 @@ const Home = () => {
       <Helmet>
         <title>openLEARN | Home</title>
       </Helmet>
-      <Banner />
+      {!user && <Banner />}
       <Carousel />
       <BecomeInstructor />
       <Collaborators />
       <ContactUs />
       <FeedBackCarousel />
       <TotalStatistics />
+      <Accrodion />
     </>
   );
 };
