@@ -79,7 +79,7 @@ const MyEnrollClassDetails = () => {
 
     // setFeedBack
     try {
-      await setFeedBack(user?.email, FeedBack);
+      await setFeedBack(FeedBack);
 
       toast.success("Get FeedBack SuccessFul");
     } catch (err) {

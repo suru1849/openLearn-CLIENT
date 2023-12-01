@@ -38,7 +38,7 @@ const FeedBackCarousel = () => {
                   alt="..."
                 />
                 <div
-                  className=" bg-gray-500 py-2 rounded-lg absolute top-[15%] 
+                  className=" bg-gray-500 py-2 px-2 rounded-lg absolute top-[15%] 
           md:top-[25%] left-[25%] md:left-[28%] w-[50%] flex flex-col justify-center items-center"
                 >
                   <figure>
@@ -59,7 +59,7 @@ const FeedBackCarousel = () => {
                       {data?.classTitle}
                     </span>
                   </p>
-                  <p className="text-xs md:text-2xl font-bold w-[70%] truncate">
+                  <p className="text-xs md:text-2xl font-bold w-full truncate">
                     FeedBack:{" "}
                     <span className="font-semibold text-red-400">
                       {data?.description}

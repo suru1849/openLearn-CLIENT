@@ -8,8 +8,8 @@ export const setAssignment = async (Class, id) => {
 };
 
 // Set FeedBack
-export const setFeedBack = async (email, feedBack) => {
-  const { data } = await axiosSecure.put(`feedBack/${email}`, feedBack);
+export const setFeedBack = async (feedBack) => {
+  const { data } = await axiosSecure.post(`/feedBack`, feedBack);
 
   return data;
 };
