@@ -4,7 +4,7 @@ const Accrodion = () => {
       <h1 className="text-3xl font-bold text-center my-10">FAQ</h1>
       <div className="join join-vertical w-full">
         <div className="collapse collapse-arrow join-item border border-base-300">
-          <input type="radio" name="my-accordion-4" checked="checked" />
+          <input type="radio" name="my-accordion-4" defaultChecked="checked" />
           <div className="collapse-title text-xl font-medium">
             What is our goal?
           </div>

@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 const ClassCard = ({ Class }) => {
   return (
-    <div className="flex flex-col p-4 space-y-5 overflow-hidden rounded-lg shadow-md bg-base-200 text-black group">
+    <div
+      className="flex flex-col p-4 space-y-5 overflow-hidden rounded-lg shadow-md bg-base-200 text-black group"
+      data-aos="zoom-in"
+    >
       <div className="flex space-x-2">
         <div className="font-semibold text-sm">Teacher: </div>
         <div className="flex flex-col">
