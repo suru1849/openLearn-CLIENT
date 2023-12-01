@@ -4,6 +4,7 @@ import Banner from "./Banner/Banner";
 import BecomeInstructor from "./BecomeIstructior/BecomeInstructor";
 import TotalStatistics from "./TotalStatistics/TotalStatistics";
 import Collaborators from "./Collaborators/Collaborators";
+import ContactUs from "./ContactUs/ContactUs";
 
 const Home = () => {
   const { user } = useAuth();
@@ -17,6 +18,7 @@ const Home = () => {
       <BecomeInstructor />
       <Collaborators />
       <TotalStatistics />
+      <ContactUs />
     </>
   );
 };
