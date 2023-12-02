@@ -33,8 +33,10 @@ export const getAClass = async (id) => {
 };
 
 // Get Classes Depending on Status
-export const getClassByStatus = async ({ status }) => {
-  const { data } = await axiosSecure(`/classes?status=${status}`);
+export const getClassByStatus = async ({ status, skip, limit }) => {
+  const { data } = await axiosSecure(
+    `/classes?status=${status}&skip=${skip}&limit=${limit}`
+  );
 
   if (!data) return [];
 
