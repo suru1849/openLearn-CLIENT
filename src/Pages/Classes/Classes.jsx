@@ -6,6 +6,7 @@ import ClassCard from "./ClassCard";
 import EmptyPage from "../../Components/EmptyPage/EmptyPage";
 import { getTotal } from "../../api/statistics";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const Classes = () => {
   const [totalClass, setTotalClass] = useState(null);
@@ -34,6 +35,9 @@ const Classes = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>openLEARN | Classes</title>
+      </Helmet>
       {classes.length > 0 ? (
         <div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10">

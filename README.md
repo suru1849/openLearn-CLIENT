@@ -1,8 +1,8 @@
-# React + Vite
+Main Features of the webisite:
+-> User friendly easy to use.
+-> Comprehensive to users.
+-> Responisve for small,medium and large devices.
+-> User request button to become a teacher on this website.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Client-live: https://openlearn-6bb22.web.app
+api: https://open-learn-server.vercel.app

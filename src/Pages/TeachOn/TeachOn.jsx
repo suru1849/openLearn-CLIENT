@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import { getTeacherReq, teacherReq } from "../../api/auth";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 const TeachOn = () => {
   const { user } = useAuth();
@@ -51,6 +52,9 @@ const TeachOn = () => {
 
   return (
     <div className="min-h-screen flex justify-center items-center">
+      <Helmet>
+        <title>openLEARN | Teach On openLEARN</title>
+      </Helmet>
       <section className="w-[90%] min-h-[100%] my-10 rounded-md p-6 bg-gray-400 text-gray-50 ">
         <form
           onSubmit={handleSubmit}

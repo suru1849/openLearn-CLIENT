@@ -1,8 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
 
 const Logo = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="flex justify-center items-center">
+    <div
+      onClick={() => navigate(-1)}
+      className="flex justify-center items-center"
+    >
       <div className="w-14 h-14">
         <img className="font-b" src={logo} alt="logo" />
       </div>
