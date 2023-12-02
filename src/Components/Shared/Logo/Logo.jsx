@@ -6,7 +6,7 @@ const Logo = () => {
 
   return (
     <div
-      onClick={() => navigate(-1)}
+      onClick={() => navigate("/")}
       className="flex justify-center items-center"
     >
       <div className="w-14 h-14">
